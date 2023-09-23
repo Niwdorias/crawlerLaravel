@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MainController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
-});
+}); 
+
+//Route::get('/main', 'MainController@scrape');
+
+Route::get('/main', [MainController::class, 'scrape']);
+
+//[MainController::class, 'scrape']
