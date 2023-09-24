@@ -9,6 +9,7 @@
         "drnxloc/laravel-simple-html-dom": "^1.9",
         "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.8",
+        "jenssegers/mongodb": "^3.9",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7"
