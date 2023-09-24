@@ -29,6 +29,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -163,6 +164,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -195,3 +197,4 @@ return [
     ])->toArray(),
 
 ];
+
