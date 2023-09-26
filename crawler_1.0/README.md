@@ -1,112 +1,64 @@
-Setting Up and Running the Backend with Laravel and MongoDB
-Welcome to our comprehensive guide on setting up and running a robust backend using Laravel, a popular PHP framework, and MongoDB, a powerful NoSQL database. In this tutorial, we will walk you through the installation of MongoDB, the configuration of a Laravel project, and the steps to start the Laravel server.
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-Prerequisites
-Before we dive into the setup, ensure that you have the following prerequisites installed on your system:
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-PHP: Install PHP on your system. You can download it from the official PHP website here.
+## About Laravel
 
-Composer: Composer is a PHP dependency manager. You can download and install it from the official website here.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-MongoDB: Install MongoDB on your system. Visit the official MongoDB website to download and follow the installation instructions here.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel: Install Laravel globally using Composer by running the following command:
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-shell
-Copy code
-composer global require laravel/installer
-Now that you've ensured your system meets these prerequisites, let's proceed with setting up your Laravel-MongoDB backend.
+## Learning Laravel
 
-Step 1: Install and Configure MongoDB
-Install MongoDB: Follow the installation instructions provided for your specific operating system on the official MongoDB website.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-Start MongoDB Server:
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-On Linux, you can start MongoDB with the following command:
+## Laravel Sponsors
 
-shell
-Copy code
-sudo service mongod start
-On Windows, start MongoDB using the MongoDB Compass application or the command-line tool.
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-Verify MongoDB:
-To ensure MongoDB is up and running, open a terminal or command prompt and run:
+### Premium Partners
 
-shell
-Copy code
-mongo
-This command should open the MongoDB shell.
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[OP.GG](https://op.gg)**
+- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- **[Lendio](https://lendio.com)**
 
-Create a Database:
-In the MongoDB shell, create a new database for your Laravel project. For example:
+## Contributing
 
-shell
-Copy code
-use myproject
-Replace myproject with your desired database name.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Step 2: Create a Laravel Project
-Generate a Laravel Project: Create a new Laravel project using Composer. Replace myproject with your project name:
+## Code of Conduct
 
-shell
-Copy code
-composer create-project --prefer-dist laravel/laravel myproject
-Navigate to Your Project:
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-shell
-Copy code
-cd myproject
-Step 3: Configure Laravel for MongoDB
-Install the Laravel MongoDB Package:
+## Security Vulnerabilities
 
-shell
-Copy code
-composer require jenssegers/mongodb
-Configure the .env File:
-Open the .env file in your Laravel project root directory and configure the MongoDB connection:
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-dotenv
-Copy code
-DB_CONNECTION=mongodb
-DB_HOST=127.0.0.1
-DB_PORT=27017
-DB_DATABASE=myproject
-DB_USERNAME=
-DB_PASSWORD=
-Ensure that DB_CONNECTION is set to mongodb and update DB_DATABASE with your MongoDB database name.
+## License
 
-Update config/database.php:
-In your config/database.php file, update the mongodb connection settings as follows:
-
-php
-Copy code
-'mongodb' => [
-    'driver'   => 'mongodb',
-    'host'     => env('DB_HOST', '127.0.0.1'),
-    'port'     => env('DB_PORT', 27017),
-    'database' => env('DB_DATABASE', 'myproject'),
-    'username' => env('DB_USERNAME', ''),
-    'password' => env('DB_PASSWORD', ''),
-    'options'  => [
-        'database' => 'admin', // If you need authentication
-    ],
-],
-Step 4: Start the Laravel Server
-Generate an Application Key:
-
-shell
-Copy code
-php artisan key:generate
-Migrate MongoDB Collections:
-
-shell
-Copy code
-php artisan migrate
-Start the Laravel Development Server:
-
-shell
-Copy code
-php artisan serve
-Your Laravel development server will start at http://localhost:8000. Open your web browser and access your Laravel application.
-
-Congratulations! You've successfully set up and configured a beautiful Laravel project with MongoDB as the backend database. You're now ready to build your Laravel application with the power of MongoDB behind it. Happy coding!
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
