@@ -9,13 +9,15 @@ use App\Models\CrawlerTable;
 class MainController extends Controller
 {
     
-    public function getUrlList(){
-        //$newRes = CrawlerTable::all();
-        //return response()->json([$newRes], 201);
-        return response()->json([CrawlerTable::all()], 201);
-       // echo $newRes;
-        //echo 'here';
-    }
+    public function getUrlList()
+{
+    // Retrieve all records from the CrawlerTable model
+    $urlList = CrawlerTable::all();
+    
+
+    // Return the object as JSON
+    return $urlList;
+}
   
     public function addUrlItem(Request $request) {
         $url = $request->get('url');
@@ -40,19 +42,19 @@ class MainController extends Controller
             return response()->json([$post], 201);
         }
     }
+    
     public function newView(Request $request)
 {
-    
-    // Get URL parameter for scraping
-    $url = $request->get('url');
-
-    // Get depth parameter from the query, default to 1 if not provided
-    $depth = $request->get('depth', 1);
-
-    // Initialize Guzzle
-    $client = new Client();
 
     try {
+        // Get URL parameter for scraping
+        $url = $request->get('url');
+
+        // Get depth parameter from the query, default to 1 if not provided
+        $urlDepth = $request->get('depth', 1);
+
+        // Initialize Guzzle
+        $client = new Client();
         // Get request
         $response = $client->request('GET', $url);
 
@@ -99,9 +101,11 @@ class MainController extends Controller
 
             // Now you have an array of URL information
             // You can use or display it as needed.
+            
             foreach ($filtered_urls as $filtered_url) {
                 echo $filtered_url['url'] . ' (Depth: ' . $filtered_url['depth'] . ')<br>';
             }
+            
             $findUrl = CrawlerTable::where('url', $url)->get();
     
         if (!$findUrl->isEmpty()) {
@@ -135,7 +139,7 @@ class MainController extends Controller
                 }
 
                 // Serialize the array and save it to the urlobj field
-                $crawlerRecord->urlobj = json_encode($urlobjArray);
+                $crawlerRecord->urlobj = $urlobjArray;
 
                 $crawlerRecord->save();
     

@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 //Route::get('UrlSearchResults', 'MainController@getUrlList');
 Route::get('UrlList', [MainController::class, 'getUrlList']);
-Route::get('newView', [MainController::class, 'newView']);
+Route::post('newView', [MainController::class, 'newView']);
 Route::post('addUrl', [MainController::class, 'addUrlItem']);
