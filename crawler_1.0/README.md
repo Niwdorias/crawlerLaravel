@@ -1,3 +1,30 @@
+Backend for Web Crawler
+
+Introduction
+
+Welcome to the documentation for the Backend of our Web Crawler! This backend service is designed to work seamlessly with a front-end application that sends POST requests. Its primary function is to scrape a given URL for all nested URLs, with a configurable depth level ranging from 0 to 3. Once the scraping process is successful, it stores the results in a database for further analysis or utilization.
+
+Features
+Web Scraping: This backend can efficiently scrape web pages, extracting nested URLs within the specified depth range.
+
+Customizable Depth: The depth configuration allows you to control how many levels deep the web crawler should search for nested URLs, making it adaptable for various use cases.
+
+Database Integration: The scraped data is stored in a database, providing a structured and easily accessible repository for the collected URLs.
+
+Getting Started
+To set up and run the Web Crawler Backend, follow these steps:
+
+Requerments and Dependencies:
+-PHP8.0
+-Laravel9
+-mongoDB any
+
+Laravel external packages used:
+
+drnxloc/laravel-simple-html-dom:https://github.com/drnxloc/laravel-simple-html-dom
+GuzzleHttp/Client 
+
+
 
 Setting Up and Running the Backend with Laravel and MongoDB
 
